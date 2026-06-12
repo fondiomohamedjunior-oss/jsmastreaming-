@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Woroba Streaming</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#111;color:white}
+header{background:#ff6600;padding:15px;text-align:center;font-size:24px;font-weight:bold}
+nav{display:flex;justify-content:center;gap:15px;padding:10px;background:#222;flex-wrap:wrap}
+nav a{color:white;text-decoration:none}
+.hero{text-align:center;padding:40px 20px}
+.hero h1{font-size:35px;margin-bottom:10px}
+.hero p{color:#ccc}
+.btn{display:inline-block;margin-top:15px;padding:10px 20px;background:#ff6600;color:white;text-decoration:none;border-radius:5px}
+.section{padding:20px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px}
+.card{background:#222;padding:15px;border-radius:10px}
+.card img{width:100%;border-radius:10px}
+form{display:flex;flex-direction:column;gap:10px;max-width:500px;margin:auto}
+input,textarea{padding:10px;border:none;border-radius:5px}
+button{padding:10px;background:#ff6600;border:none;color:white;cursor:pointer;border-radius:5px}
+footer{background:#222;text-align:center;padding:15px;margin-top:30px}
+</style>
+</head>
+<body>
+<header>🎵 WOROBA STREAMING</header>
+<nav>
+<a href="#albums">Albums</a>
+<a href="#artiste">Espace Artiste</a>
+<a href="#paiement">Paiement</a>
+<a href="#admin">Admin</a>
+</nav>
+
+<section class="hero">
+<h1>Bienvenue sur Woroba Streaming</h1>
+<p>Écoutez et publiez votre musique en toute simplicité.</p>
+<a class="btn" href="#albums">Découvrir</a>
+</section>
+
+<section class="section" id="albums">
+<h2>Albums disponibles</h2><br>
+<div class="cards">
+<div class="card">
+<h3>Nom de l'Album</h3>
+<p>Artiste : Exemple</p>
+<p>Prix d'écoute : 100 FCFA</p>
+<button>Payer et écouter</button>
+</div>
+</div>
+</section>
+
+<section class="section" id="artiste">
+<h2>Espace Artiste</h2><br>
+<form>
+<input type="text" placeholder="Nom d'artiste">
+<input type="email" placeholder="Email">
+<input type="text" placeholder="Titre du projet">
+<textarea placeholder="Description du projet"></textarea>
+<button type="submit">Envoyer le projet</button>
+</form>
+</section>
+
+<section class="section" id="paiement">
+<h2>Paiement Wave</h2><br>
+<div class="card">
+<h3>Wave : 0556043286</h3>
+<p>Après paiement, votre demande sera validée par l'administrateur.</p>
+</div>
+</section>
+
+<section class="section" id="admin">
+<h2>Espace Admin</h2><br>
+<div class="card">
+<p>Validation des paiements</p>
+<p>Validation des albums</p>
+<p>Gestion des artistes</p>
+<p>Statistiques d'écoute</p>
+</div>
+</section>
+
+<footer>
+Woroba Streaming © 2026<br>
+Développé par Chidochi
+</footer>
+</body>
+</html>
