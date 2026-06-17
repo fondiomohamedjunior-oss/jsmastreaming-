@@ -3,69 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Artiste</title>
+<title>JSMA-STREAMING</title>
 
 <style>
 body{
-background:#111;
-color:white;
-font-family:Arial,sans-serif;
-text-align:center;
-margin:0;
+    margin:0;
+    background:#111;
+    color:white;
+    font-family:Arial,sans-serif;
+    text-align:center;
 }
 
 .header{
-background:#ff7a00;
-padding:20px;
-font-size:25px;
-font-weight:bold;
+    background:#ff7a00;
+    padding:20px;
+}
+
+.logo{
+    width:120px;
+    border-radius:15px;
+}
+
+.card{
+    width:90%;
+    max-width:500px;
+    margin:20px auto;
+    background:#1a1a1a;
+    border-radius:20px;
+    padding:20px;
+    animation:fadeIn 0.8s ease;
+}
+
+.photo-container{
+    position:relative;
+    width:180px;
+    height:180px;
+    margin:auto;
 }
 
 .photo{
-width:180px;
-height:180px;
-border-radius:50%;
-background:#333;
-margin:20px auto;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:60px;
-border:4px solid #ff7a00;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid #ff7a00;
+    box-shadow:0 0 25px #ff7a00;
+}
+
+.flag{
+    position:absolute;
+    bottom:0;
+    right:0;
+    font-size:35px;
+    background:white;
+    border-radius:50%;
+    padding:2px;
 }
 
 .nom{
-font-size:28px;
-font-weight:bold;
-margin-top:10px;
+    margin-top:15px;
+    font-size:28px;
+    font-weight:bold;
+    color:#ff7a00;
 }
 
 .bio{
-width:90%;
-margin:auto;
-padding:15px;
-line-height:1.6;
-}
-
-.bloc{
-background:#222;
-width:85%;
-margin:15px auto;
-padding:15px;
-border-radius:15px;
+    margin-top:15px;
+    line-height:1.6;
 }
 
 .btn{
-background:#ff7a00;
-padding:15px;
-border-radius:12px;
-font-weight:bold;
-margin-bottom:10px;
+    display:block;
+    width:85%;
+    margin:15px auto;
+    padding:15px;
+    background:#ff7a00;
+    color:white;
+    text-decoration:none;
+    border-radius:15px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#ffb347;
+    color:black;
+}
+
+.btn:active{
+    transform:scale(0.95);
 }
 
 .indispo{
-color:#ccc;
-padding:10px;
+    background:#222;
+    width:85%;
+    margin:10px auto;
+    padding:12px;
+    border-radius:10px;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 </style>
 </head>
@@ -73,32 +118,165 @@ padding:10px;
 <body>
 
 <div class="header">
-🎧 JSMA-STREAMING
+<img src="images/logo.jpg" class="logo">
 </div>
 
-<div class="photo">🎤</div>
+<div class="card">
 
-<div class="nom" id="nomArtiste"></div>
-
-<div class="bio">
-Biographie bientôt disponible.
+<div class="photo-container">
+    <img id="photo" class="photo" src="">
+    <div id="flag" class="flag">🇨🇮</div>
 </div>
 
-<div class="bloc">
-<div class="btn">💿 ALBUMS</div>
+<div id="nom" class="nom"></div>
+
+<div id="bio" class="bio"></div>
+
+<a href="#" class="btn">💿 ALBUMS</a>
 <div class="indispo">❌ PAS ENCORE DISPONIBLE</div>
-</div>
 
-<div class="bloc">
-<div class="btn">🎵 EP</div>
+<a href="#" class="btn">🎵 EP</a>
 <div class="indispo">❌ PAS ENCORE DISPONIBLE</div>
+
 </div>
 
 <script>
+
 const params = new URLSearchParams(window.location.search);
 const artiste = params.get("artiste");
-document.getElementById("nomArtiste").textContent = artiste;
+
+const artistes = {
+
+"CHIDOCHI":{
+photo:"images/chidochi.jpg",
+flag:"🇨🇮",
+bio:"Artiste chanteur, rappeur gospel, arrangeur, réalisateur clip vidéo et CEO du label MUSIC-STAR."
+},
+
+"KING MEDUZA":{
+photo:"images/king-meduza.jpg",
+flag:"🇨🇮",
+bio:"Artiste chanteur et rappeur ivoirien."
+},
+
+"BKH142Z":{
+photo:"images/bkh142z.jpg",
+flag:"🇨🇮",
+bio:"Artiste chanteur et rappeur ivoirien."
+},
+
+"MC FLASH":{
+photo:"images/mc-flash.jpg",
+flag:"🇨🇮",
+bio:"Artiste chanteur et rappeur ivoirien."
+},
+
+"MK LE ROI CHIBI":{
+photo:"images/mk-le-roi-chibi.jpg",
+flag:"🇨🇮",
+bio:"Artiste rappeur ivoirien."
+},
+
+"DJ TK":{
+photo:"images/dj-tk.jpg",
+flag:"🇨🇮",
+bio:"Artiste chanteur ivoirien."
+},
+
+"LE KONG":{
+photo:"images/le-kong.jpg",
+flag:"🇨🇮",
+bio:"Artiste chanteur, danseur et chorégraphe ivoirien."
+},
+
+"KITNO":{
+photo:"images/kitno.jpg",
+flag:"🇨🇮",
+bio:"Artiste chanteur et rappeur ivoirien."
+},
+
+"IBSONNE":{
+photo:"images/ibsonne.jpg",
+flag:"🇨🇮",
+bio:"Artiste chanteur et rappeur ivoirien."
+},
+
+"GMB PRINCE ALI":{
+photo:"images/gmb-prince-ali.jpg",
+flag:"🇨🇮",
+bio:"Artiste rappeur ivoirien."
+},
+
+"LE DUK":{
+photo:"images/le-duk.jpg",
+flag:"🇨🇮",
+bio:"Artiste rappeur ivoirien."
+},
+
+"MATO CASCADEUR":{
+photo:"images/mato-cascadeur.jpg",
+flag:"🇨🇮",
+bio:"Artiste chanteur ivoirien."
+},
+
+"ROSSI WARIKA":{
+photo:"images/rossi-warika.jpg",
+flag:"🇨🇮",
+bio:"Artiste chanteur et rappeur ivoirien."
+},
+
+"AMAZOGA 1ER":{
+photo:"images/amazoga-1er.jpg",
+flag:"🇧🇫",
+bio:"Artiste chanteur burkinabè."
+},
+
+"RCO ZAPAS":{
+photo:"images/rco-zapas.jpg",
+flag:"🇨🇮",
+bio:"Artiste rappeur et comédien ivoirien."
+},
+
+"HK DELIE":{
+photo:"images/hk-delie.jpg",
+flag:"🇨🇮",
+bio:"Artiste rappeur ivoirien."
+},
+
+"FANTOME S2FNK":{
+photo:"images/fantome-s2fnk.jpg",
+flag:"🇨🇮",
+bio:"Artiste chanteur ivoirien."
+},
+
+"DIDI CHRIST":{
+photo:"images/didi-christ.jpg",
+flag:"🇨🇮",
+bio:"Artiste rappeur ivoirien."
+},
+
+"R_BOSS":{
+photo:"images/r-boss.jpg",
+flag:"🇧🇫",
+bio:"Artiste chanteur et rappeur burkinabè."
+},
+
+"KENESHY":{
+photo:"images/keneshy.jpg",
+flag:"🇨🇮",
+bio:"Artiste rappeur ivoirien."
+}
+
+};
+
+if(artistes[artiste]){
+document.getElementById("nom").textContent = artiste;
+document.getElementById("bio").textContent = artistes[artiste].bio;
+document.getElementById("photo").src = artistes[artiste].photo;
+document.getElementById("flag").textContent = artistes[artiste].flag;
+}
+
 </script>
 
 </body>
-  </html>
+</html>
