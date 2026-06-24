@@ -145,6 +145,7 @@ body{
 
 </div>
 
+
 <script>
 
 const params = new URLSearchParams(window.location.search);
@@ -343,7 +344,36 @@ document.getElementById("ep-zone").innerHTML=`
 }
 
 }
+function commander(){
 
+let nom=document.getElementById("nomclient").value;
+let numero=document.getElementById("numero").value;
+
+let msg=
+"Bonjour JSMA-STREAMING%0A%0A"+
+"Nom : "+nom+"%0A"+
+"Numéro Wave : "+numero+"%0A%0A"+
+"Je souhaite acheter l'EP TU ME VOIS EN ZÔGÔ de DM95.";
+
+window.open("https://wa.me/2250500061629?text="+msg);
+
+}
+
+function telecharger(){
+
+let code=document.getElementById("code").value;
+
+if(code==="DM95-500"){
+
+window.open("https://drive.google.com/drive/folders/1QFcVm7CkHDG0TFEwoW_lb5Oco3hluZ85");
+
+}else{
+
+alert("Code incorrect");
+
+}
+
+    }
 </script>
 
 </body>
