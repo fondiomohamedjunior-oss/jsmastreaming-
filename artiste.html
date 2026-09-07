@@ -308,8 +308,6 @@ drive:"https://drive.google.com/drive/folders/1EVn7lC8XZjarZ2yCOP8JJJ3z7D1WJoYo"
 
 };
 
-};
-
 if(artistes[artiste]){
 
 document.getElementById("nom").textContent = artiste;
@@ -360,26 +358,45 @@ document.getElementById("ep-zone").innerHTML=`
 }
 function commander(){
 
-let nom=document.getElementById("nomclient").value;
-let numero=document.getElementById("numero").value;
+let nom = document.getElementById("nomclient").value;
+let numero = document.getElementById("numero").value;
 
-let msg=
-"Bonjour JSMA-STREAMING%0A%0A"+
-"Nom : "+nom+"%0A"+
-"Numéro Wave : "+numero+"%0A%0A"+
-"Je souhaite acheter l'EP TU ME VOIS EN ZÔGÔ de DM95.";
+if(!nom || !numero){
+alert("Veuillez remplir votre nom et votre numéro Wave.");
+return;
+}
 
-window.open("https://wa.me/2250500061629?text="+msg);
+let projet = eps[artiste];
+
+let msg =
+"Bonjour JSMA-STREAMING\n\n"+
+"Nom : "+nom+"\n"+
+"Numéro Wave : "+numero+"\n\n"+
+"Je souhaite acheter l'EP "+
+projet.nom+
+" de "+
+artiste+
+" au prix de "+
+projet.prix+".";
+
+window.open(
+"https://wa.me/"+projet.whatsapp+
+"?text="+encodeURIComponent(msg),
+"_blank"
+);
 
 }
 
+
 function telecharger(){
 
-let code=document.getElementById("code").value;
+let code = document.getElementById("code").value.trim();
 
-if(code==="DM9533000"){
+let projet = eps[artiste];
 
-window.open("https://drive.google.com/drive/folders/1QFcVm7CkHDG0TFEwoW_lb5Oco3hluZ85");
+if(code === projet.code){
+
+window.open(projet.drive,"_blank");
 
 }else{
 
@@ -387,8 +404,4 @@ alert("Code incorrect");
 
 }
 
-    }
-</script>
-
-</body>
-</html>
+}
